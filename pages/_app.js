@@ -1,7 +1,13 @@
-
+import { WeatherProvider } from "../Context";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <WeatherProvider>
+        <Component {...pageProps} />
+      </WeatherProvider>
+    </>
+  );
 }
 
-export default MyApp
+export default MyApp;
