@@ -12,6 +12,7 @@ export const WeatherProvider = ({ children }) => {
   const [list, setList] = useState("");
   const [current, setCurrent] = useState("");
   const [currentImage, setCurrentImage] = useState("");
+  const [city, setCity] = useState("");
   
 
   return (
@@ -32,7 +33,9 @@ export const WeatherProvider = ({ children }) => {
         current,
         setCurrent,
         currentImage,
-        setCurrentImage
+        setCurrentImage,
+        city,
+        setCity
       }}
     >
       {children}

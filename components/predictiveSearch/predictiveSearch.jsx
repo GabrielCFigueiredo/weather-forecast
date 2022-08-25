@@ -4,9 +4,7 @@ import {
   Container,
   IconButton,
   InputBase,
-  OutlinedInput,
   Paper,
-  useTheme,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
@@ -28,20 +26,19 @@ const useStyle = makeStyles((theme) => ({
 
 export default function PredictiveSearch() {
   const classes = useStyle();
-  const [city, setCity] = useState("");
+  
   const [la, setLa] = useState("");
   const [lon, setLon] = useState("");
   const [currentCity, setCurrentCity] = useState("");
   const [image, setImage] = useState("");
   const {
     setLocality,
-    locality,
     setLatitude,
     setLongitude,
-    latitude,
     URL,
     API_KEY,
-    currentImage
+    city,
+    setCity
   } = useContext(WeatherContext);
 
   const API = `http://openweathermap.org/img/wn/${image}@2x.png`;
@@ -96,7 +93,7 @@ export default function PredictiveSearch() {
             onChange={handleInput}
             value={city}
           />
-          <Link href="/showWeatherForecast" passHref>
+          <Link href="" passHref>
             <IconButton type="button" onClick={searchData}>
               <SearchIcon />
             </IconButton>
