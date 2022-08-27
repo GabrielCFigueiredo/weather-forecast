@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useState } from "react";
 
 export const WeatherContext = createContext({});
@@ -13,6 +14,22 @@ export const WeatherProvider = ({ children }) => {
   const [current, setCurrent] = useState("");
   const [currentImage, setCurrentImage] = useState("");
   const [city, setCity] = useState("");
+
+  const handleInput = (e) => {
+    setCity(e.target.value);
+  };
+
+  const searchData = () => {
+    axios
+      .get(`${URL}weather?q=${city}&appid=${API_KEY}`)
+      .then(({ data }) => {
+        setLocality(data);
+        setLatitude(data.coord.lat);
+        setLongitude(data.coord.lon);
+        
+      })
+      .catch((error) => error.res);
+  }
   
 
   return (
@@ -35,7 +52,9 @@ export const WeatherProvider = ({ children }) => {
         currentImage,
         setCurrentImage,
         city,
-        setCity
+        setCity,
+        handleInput,
+        searchData
       }}
     >
       {children}

@@ -16,9 +16,11 @@ html {
 
 body {
     font-family: "Roboto",sans-serif;
-    background-image: url("https://img.freepik.com/fotos-gratis/fundo-aquarela-pintado-a-mao-com-forma-de-ceu-e-nuvens_24972-1108.jpg?w=1380&t=st=1661433855~exp=1661434455~hmac=6937f9421f52e7142f5a239d36d7fec239b002d7323841d5baacda8307063623");
+    background-image: url("https://img.freepik.com/vetores-gratis/fundo-lindo-nuvens-com-design-de-ceu-azul_1017-25501.jpg?w=1380&t=st=1661615467~exp=1661616067~hmac=8b55dc92d18c1b85d5ac2a6d6e166ac702d30da72329f4d4bae5e6c40da1ae21");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 a {
