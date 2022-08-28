@@ -53,6 +53,7 @@ export default function Forecast() {
       <Box
         sx={{
           width: "99vw",
+          height: "80vh"
         }}
       >
         <Container maxWidth="sm">
@@ -111,7 +112,7 @@ export default function Forecast() {
             opacity: "0.6",
             height: "170px",
             color: "white",
-            marginTop: "150px",
+marginTop: "50px"
           }}
         >
           <Box
