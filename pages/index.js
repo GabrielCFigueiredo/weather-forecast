@@ -16,7 +16,7 @@ export default function Home() {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-       
+        gap: "60px",
       }}
     >
       <Paper
@@ -24,7 +24,7 @@ export default function Home() {
         sx={{
           p: "2px 8px",
           display: "flex",
-          justifyContent:"space-between",
+          justifyContent: "space-between",
           alignItems: "center",
         }}
       >
@@ -38,7 +38,7 @@ export default function Home() {
           <SearchIcon />
         </IconButton>
       </Paper>
-      {locality ? <Forecast /> : <PredictiveSearch />}
+      <Box height={"80vh"}>{locality ? <Forecast /> : <PredictiveSearch />}</Box>
     </Box>
   );
 }

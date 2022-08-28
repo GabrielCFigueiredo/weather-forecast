@@ -112,7 +112,6 @@ export default function Forecast() {
             height: "170px",
             color: "white",
             marginTop: "150px",
-            border: "1px solid red"
           }}
         >
           <Box
