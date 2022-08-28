@@ -53,10 +53,10 @@ export default function Forecast() {
       <Box
         sx={{
           width: "99vw",
-          height: "80vh"
+          height: "80vh",
         }}
       >
-        <Container maxWidth="sm">
+        <Box>
           <Box
             sx={{
               height: "60vh",
@@ -104,7 +104,7 @@ export default function Forecast() {
                 );
               })}
           </Box>
-        </Container>
+        </Box>
         <Box
           sx={{
             overflow: "scroll",
@@ -112,7 +112,7 @@ export default function Forecast() {
             opacity: "0.6",
             height: "170px",
             color: "white",
-marginTop: "50px"
+            marginTop: "150px",
           }}
         >
           <Box
