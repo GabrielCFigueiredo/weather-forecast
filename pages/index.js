@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <Box
       sx={{
-        padding: "10px",
+        padding: "10px 0 0 0",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        height: "80vh"
+       
       }}
     >
       <Paper

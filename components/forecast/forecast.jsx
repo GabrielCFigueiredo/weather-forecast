@@ -109,13 +109,15 @@ export default function Forecast() {
             overflow: "scroll",
             backgroundColor: "black",
             opacity: "0.6",
-            height: "310px",
+            height: "170px",
             color: "white",
+            marginTop: "150px",
+            border: "1px solid red"
           }}
         >
           <Box
             sx={{
-              height: "20vh",
+              height: "5vh",
 
               padding: "10px",
               display: "flex",
@@ -135,7 +137,7 @@ export default function Forecast() {
                       flexDirection: "column",
                       alignItems: "center",
                       minWidth: "200px",
-                      height: "250px",
+                      height: "140px",
                       border: "1px solid white",
                       borderRadius: "10px",
                     }}

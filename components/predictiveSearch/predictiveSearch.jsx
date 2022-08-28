@@ -53,8 +53,8 @@ export default function PredictiveSearch() {
       .catch((error) => error.res);
   }, [API_KEY, URL, la, lon]);
   return (
-    <Container maxWidth="sm">
-      <Container maxWidth="sm">
+    <Box>
+      <Box>
         <Box
           sx={{
             height: "60vh",
@@ -104,7 +104,7 @@ export default function PredictiveSearch() {
               );
             })}
         </Box>
-      </Container>
-    </Container>
+      </Box>
+    </Box>
   );
 }
