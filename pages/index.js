@@ -16,7 +16,7 @@ export default function Home() {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        gap: "16px"
+        gap: "32px"
       }}
     >
       <Paper

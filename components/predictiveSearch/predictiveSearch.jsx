@@ -61,6 +61,7 @@ export default function PredictiveSearch() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            
           }}
         >
           {currentCity &&
