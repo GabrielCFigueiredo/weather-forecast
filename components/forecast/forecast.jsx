@@ -56,7 +56,7 @@ export default function Forecast() {
           height: "80vh",
         }}
       >
-        <Box>
+        <Box sx={{ height: "500px"}}>
           <Box
             sx={{
               height: "60vh",
@@ -112,7 +112,7 @@ export default function Forecast() {
             opacity: "0.6",
             height: "170px",
             color: "white",
-            marginTop: "150px",
+            marginTop: "120px",
           }}
         >
           <Box

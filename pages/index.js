@@ -38,7 +38,7 @@ export default function Home() {
           <SearchIcon />
         </IconButton>
       </Paper>
-      <Box height={"80vh"}>{locality ? <Forecast /> : <PredictiveSearch />}</Box>
+      <Box height={"80vh"} marginTop={"100px"}>{locality ? <Forecast /> : <PredictiveSearch />}</Box>
     </Box>
   );
 }
