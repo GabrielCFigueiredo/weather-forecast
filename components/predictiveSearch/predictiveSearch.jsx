@@ -66,27 +66,39 @@ export default function PredictiveSearch() {
           {currentCity &&
             currentCity.map((current) => {
               return (
-                <Box key={current.id}>
-                  <span>{moment().format("LLL")}</span>
+                <Box
+                  key={current.id}
+                  display={"flex"}
+                  flexDirection={"column"}
+                  gap={"16px"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                >
+                  <Typography variant="body2">
+                    {moment().format("LLL")}
+                  </Typography>
+                  <Box display={"flex"} gap={"16px"}>
+                    <Typography variant="body2">
+                      Min {current.main.temp_min.toFixed()}ºC
+                    </Typography>
+                    <Typography variant="body2">
+                      Máx {current.main.temp_max.toFixed()}ºC
+                    </Typography>
+                  </Box>
                   <Typography variant="h1">
                     {current.main.temp.toFixed()}ºC
                   </Typography>
-                  <Box sx={{
-            
-            display: "flex",
-            gap: "16px;"
-          }}>
-                    <p>Min {current.main.temp_min.toFixed()}ºC</p>
-                    <p>Máx {current.main.temp_max.toFixed()}ºC</p>
-                  </Box>
                   <CardMedia
                     component="img"
                     height={200}
                     width={200}
                     image={API}
                   />
-                  <span>{current.weather[0].description}</span>
-                  <h5>{current.name}</h5>
+
+                  <Typography variant="subtitle1">
+                    {current.weather[0].description}
+                  </Typography>
+                  <Typography variant="h6">{current.name}</Typography>
                 </Box>
               );
             })}
