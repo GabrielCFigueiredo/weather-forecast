@@ -1,24 +1,22 @@
-import { makeStyles } from "@material-ui/styles";
-import { CardMedia, Container, Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { WeatherContext } from "../../Context";
-import "@fontsource/roboto/700.css";
 import moment from "moment";
-
-const useStyle = makeStyles((theme) => ({
-  app: {
-    margin: 0,
-    padding: 0,
-    height: "100vh",
-    width: "100%",
-  },
-}));
+import Image from "next/image";
+import {
+  CardDescription,
+  CardNameCity,
+  CardTempAndImage,
+  CardTempMaxAndMin,
+  Temp,
+  Wrapper,
+  WrapperCurrent,
+} from "./predictiveSearch.styles";
+import { mdiArrowDownThin } from "@mdi/js";
+import { mdiArrowUpThin } from "@mdi/js";
+import Icon from "@mdi/react";
 
 export default function PredictiveSearch() {
-  const classes = useStyle();
-
   const [la, setLa] = useState("");
   const [lon, setLon] = useState("");
   const [currentCity, setCurrentCity] = useState("");
@@ -34,6 +32,10 @@ export default function PredictiveSearch() {
   } = useContext(WeatherContext);
 
   const API = `http://openweathermap.org/img/wn/${image}@2x.png`;
+
+  const myLoader = () => {
+    return `http://openweathermap.org/img/wn/${image}@2x.png`;
+  };
 
   const date = new Date().toLocaleString();
 
@@ -53,58 +55,37 @@ export default function PredictiveSearch() {
       .catch((error) => error.res);
   }, [API_KEY, URL, la, lon]);
   return (
-    <Box>
-      <Box>
-        <Box
-          sx={{
-            height: "60vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            
-          }}
-        >
-          {currentCity &&
-            currentCity.map((current) => {
-              return (
-                <Box
-                  key={current.id}
-                  display={"flex"}
-                  flexDirection={"column"}
-                  gap={"16px"}
-                  justifyContent={"center"}
-                  alignItems={"center"}
-                >
-                  <Typography variant="body2">
-                    {moment().format("LLL")}
-                  </Typography>
-                  <Box display={"flex"} gap={"16px"}>
-                    <Typography variant="body2">
-                      Min {current.main.temp_min.toFixed()}ºC
-                    </Typography>
-                    <Typography variant="body2">
-                      Máx {current.main.temp_max.toFixed()}ºC
-                    </Typography>
-                  </Box>
-                  <Typography variant="h1">
-                    {current.main.temp.toFixed()}ºC
-                  </Typography>
-                  <CardMedia
-                    component="img"
-                    height={200}
-                    width={200}
-                    image={API}
-                  />
-
-                  <Typography variant="subtitle1">
-                    {current.weather[0].description}
-                  </Typography>
-                  <Typography variant="h6">{current.name}</Typography>
-                </Box>
-              );
-            })}
-        </Box>
-      </Box>
-    </Box>
+    <Wrapper>
+      {currentCity &&
+        currentCity.map((current) => {
+          return (
+            <WrapperCurrent key={current.id}>
+              <span>{moment().format("LLL")}</span>
+              <CardTempMaxAndMin>
+                <span>Min {current.main.temp_min.toFixed()}ºC</span>
+                <Icon path={mdiArrowDownThin} size={1} />
+                <span>Máx {current.main.temp_max.toFixed()}ºC</span>
+                <Icon path={mdiArrowUpThin} size={1} />
+              </CardTempMaxAndMin>
+              <CardTempAndImage>
+                <Temp>{current.main.temp.toFixed()}ºC</Temp>
+                <Image
+                  loader={myLoader}
+                  src={API}
+                  alt="Previsão do Tempo"
+                  width={100}
+                  height={100}
+                />
+              </CardTempAndImage>
+              <CardDescription>
+                <span>{current.weather[0].description}</span>
+              </CardDescription>
+              <CardNameCity>
+                <span>{current.name}</span>
+              </CardNameCity>
+            </WrapperCurrent>
+          );
+        })}
+    </Wrapper>
   );
 }

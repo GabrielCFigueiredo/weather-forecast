@@ -1,9 +1,13 @@
-import { Box, CardContent, CardMedia, Link, Typography } from "@mui/material";
-import { Container } from "@mui/system";
 import axios from "axios";
 import moment from "moment";
+import Image from "next/image";
 import { useContext, useEffect } from "react";
 import { WeatherContext } from "../../Context";
+import {
+  CardCurrent,
+  CardForecastNextHours,
+  WrapperForecastNextHours,
+} from "./forecast.styles";
 
 export default function Forecast() {
   const {
@@ -22,6 +26,10 @@ export default function Forecast() {
   } = useContext(WeatherContext);
 
   const API = `http://openweathermap.org/img/wn/${currentImage}@2x.png`;
+
+  const myLoader = () => {
+    return `http://openweathermap.org/img/wn/${currentImage}@2x.png`;
+  };
 
   useEffect(() => {
     axios
@@ -50,127 +58,56 @@ export default function Forecast() {
   }, [API_KEY, URL, latitude, longitude, setData, setList]);
   return (
     <>
-      <Box
-        sx={{
-          width: "99vw",
-          height: "80vh",
-        }}
-      >
-        <Box>
-          <Box
-            sx={{
-              height: "60vh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {current &&
-              current.map((current) => {
-                return (
-                  <Box
-                    key={current.id}
-                    display={"flex"}
-                    flexDirection={"column"}
-                    gap={"16px"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                  >
-                    <Typography variant="body2">
-                      {moment().format("LLL")}
-                    </Typography>
-                    <Box display={"flex"} gap={"16px"}>
-                      <Typography variant="body2">
-                        Min {current.main.temp_min.toFixed()}ºC
-                      </Typography>
-                      <Typography variant="body2">
-                        Máx {current.main.temp_max.toFixed()}ºC
-                      </Typography>
-                    </Box>
-                    <Typography variant="h1" color={"white"}>
-                      {current.main.temp.toFixed()}ºC
-                    </Typography>
-                    <CardMedia
-                      component="img"
-                      height={200}
-                      width={200}
-                      image={API}
-                    />
-                    <Typography variant="subtitle1">
-                      {current.weather[0].description}
-                    </Typography>
-                    <Typography variant="h6">{current.name}</Typography>
-                  </Box>
-                );
-              })}
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            overflow: "scroll",
-            backgroundColor: "black",
-            opacity: "0.6",
-            height: "170px",
-            color: "white",
-            marginTop: "50px",
-          }}
-        >
-          <Box
-            sx={{
-              height: "5vh",
-
-              padding: "10px",
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              gap: "32px",
-            }}
-          >
+      <div>
+        {current &&
+          current.map((current) => {
+            return (
+              <CardCurrent key={current.id}>
+                <span>{moment().format("LLL")}</span>
+                <div>
+                  <span>Min {current.main.temp_min.toFixed()}ºC</span>
+                  <span>Máx {current.main.temp_max.toFixed()}ºC</span>
+                </div>
+                <div>
+                  <span>{current.main.temp.toFixed()}ºC</span>
+                  <Image
+                    loader={myLoader}
+                    src={API}
+                    alt="Previsão do Tempo"
+                    width={100}
+                    height={100}
+                  />
+                </div>
+                <span>{current.weather[0].description}</span>
+                <span>{current.name}</span>
+              </CardCurrent>
+            );
+          })}
+        <div>
+          <WrapperForecastNextHours>
             {list &&
               list.map((list) => {
                 return (
-                  <Box
-                    key={list.id}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      minWidth: "200px",
-                      height: "140px",
-                      border: "1px solid white",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <Typography variant="subtitle1">
+                  <CardForecastNextHours key={list.id}>
+                    <span variant="subtitle1">
                       {list.main.temp.toFixed()}ºC
-                    </Typography>
-                    <Box
-                      sx={{
-                        height: "70px",
-                        width: "70px",
-                      }}
-                    >
-                      <CardMedia
-                        sx={{
-                          height: "70px",
-                          width: "70px",
-                          background: "white",
-                          borderRadius: "10px",
-                        }}
-                        component="img"
-                        image={API}
+                    </span>
+                    <div>
+                      <Image
+                        loader={myLoader}
+                        src={API}
+                        alt="Previsão do Tempo"
+                        width={100}
+                        height={100}
                       />
-                    </Box>
-                    <Typography paddingLeft={"5px"} variant="subtitle2">
-                      {list.dt_txt}
-                    </Typography>
-                  </Box>
+                    </div>
+                    <span>{list.dt_txt}</span>
+                  </CardForecastNextHours>
                 );
               })}
-          </Box>
-        </Box>
-      </Box>
+          </WrapperForecastNextHours>
+        </div>
+      </div>
     </>
   );
 }
