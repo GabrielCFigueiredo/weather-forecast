@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  padding: 100px 0;
+  padding: 50px 0;
+  width: 100%;
+  height: 100vh;
 `;
 
 export const WrapperCurrent = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   gap: 16px;
@@ -23,7 +24,7 @@ export const CardTempMaxAndMin = styled.div`
 
 export const CardTempAndImage = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   gap: 12px;
   width: 300px;
