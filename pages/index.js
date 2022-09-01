@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <Layout>
     <StyledInput />
-    <div height={"80vh"} marginTop={"100px"}>{locality ? <Forecast /> : <PredictiveSearch />}</div>
+    <div>{locality ? <Forecast /> : <PredictiveSearch />}</div>
   </Layout>
   );
 }
