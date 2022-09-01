@@ -33,10 +33,6 @@ export default function PredictiveSearch() {
 
   const API = `http://openweathermap.org/img/wn/${image}@2x.png`;
 
-  const myLoader = () => {
-    return `http://openweathermap.org/img/wn/${image}@2x.png`;
-  };
-
   const date = new Date().toLocaleString();
 
   useEffect(() => {
@@ -69,13 +65,7 @@ export default function PredictiveSearch() {
               </CardTempMaxAndMin>
               <CardTempAndImage>
                 <Temp>{current.main.temp.toFixed()}ºC</Temp>
-                <Image
-                  loader={myLoader}
-                  src={API}
-                  alt="Previsão do Tempo"
-                  width={100}
-                  height={100}
-                />
+                <img src={API} alt="Previsão do tempo" />
               </CardTempAndImage>
               <CardDescription>
                 <span>{current.weather[0].description}</span>

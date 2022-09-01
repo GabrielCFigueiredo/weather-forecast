@@ -24,7 +24,7 @@ export const CardTempMaxAndMin = styled.div`
 
 export const CardTempAndImage = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 12px;
   width: 300px;
