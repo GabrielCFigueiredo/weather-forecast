@@ -35,7 +35,7 @@ export const Temp = styled.span`
 export const CardDescription = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 250px;
+  width: 270px;
 `;
 export const CardNameCity = styled.div`
   padding: 50px 0;

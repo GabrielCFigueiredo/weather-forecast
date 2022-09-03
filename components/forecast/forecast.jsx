@@ -5,7 +5,13 @@ import { useContext, useEffect } from "react";
 import { WeatherContext } from "../../Context";
 import {
   CardCurrent,
+  CardDescription,
   CardForecastNextHours,
+  CardTempAndImage,
+  CardTempMaxAndMin,
+  Temperature,
+  Wrapper,
+  WrapperForecast,
   WrapperForecastNextHours,
 } from "./forecast.styles";
 
@@ -26,10 +32,6 @@ export default function Forecast() {
   } = useContext(WeatherContext);
 
   const API = `http://openweathermap.org/img/wn/${currentImage}@2x.png`;
-
-  const myLoader = () => {
-    return `http://openweathermap.org/img/wn/${currentImage}@2x.png`;
-  };
 
   useEffect(() => {
     axios
@@ -58,56 +60,46 @@ export default function Forecast() {
   }, [API_KEY, URL, latitude, longitude, setData, setList]);
   return (
     <>
-      <div>
+      <Wrapper>
         {current &&
           current.map((current) => {
             return (
               <CardCurrent key={current.id}>
                 <span>{moment().format("LLL")}</span>
-                <div>
+                <CardTempMaxAndMin>
                   <span>Min {current.main.temp_min.toFixed()}ºC</span>
                   <span>Máx {current.main.temp_max.toFixed()}ºC</span>
-                </div>
-                <div>
-                  <span>{current.main.temp.toFixed()}ºC</span>
-                  <Image
-                    loader={myLoader}
-                    src={API}
-                    alt="Previsão do Tempo"
-                    width={100}
-                    height={100}
-                  />
-                </div>
+                </CardTempMaxAndMin>
+                <CardTempAndImage>
+                  <Temperature>{current.main.temp.toFixed()}ºC</Temperature>
+                  <img src={API} alt="Previsão do Tempo" />
+                </CardTempAndImage>
+                <CardDescription>
                 <span>{current.weather[0].description}</span>
+                </CardDescription>
                 <span>{current.name}</span>
               </CardCurrent>
             );
           })}
-        <div>
+        <WrapperForecast>
           <WrapperForecastNextHours>
             {list &&
               list.map((list) => {
                 return (
                   <CardForecastNextHours key={list.id}>
-                    <span variant="subtitle1">
+                    <span>
                       {list.main.temp.toFixed()}ºC
                     </span>
                     <div>
-                      <Image
-                        loader={myLoader}
-                        src={API}
-                        alt="Previsão do Tempo"
-                        width={100}
-                        height={100}
-                      />
+                    <img src={API} alt="Previsão do Tempo" />
                     </div>
                     <span>{list.dt_txt}</span>
                   </CardForecastNextHours>
                 );
               })}
           </WrapperForecastNextHours>
-        </div>
-      </div>
+        </WrapperForecast>
+      </Wrapper>
     </>
   );
 }
