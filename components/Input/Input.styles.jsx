@@ -1,28 +1,46 @@
 import styled from "styled-components";
 
 export const WrapperInput = styled.div`
-  padding: 10px ;
+  height: 45px;
+  width: 98vw;
+  
   background-color: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  margin: 2% 0 0 0;
   
-  height: 45px;
-  width: 350px;
   border-radius: 5px;
   border: none;
   outline: none;
+
+  padding: 0 10px;
+  
+`;
+
+export const CardInput = styled.div`
+ width: 95%;
+ 
 `;
 
 export const Input = styled.input`
   height: 45px;
-  width: 300px;
+  width: 98%;
   border-radius: 5px;
   border: none;
   outline: none;
-  padding: 10px;
-  font-size: 20px;
+  padding: 0 10px;
+  font-size: 15px;
   ::placeholder {
     padding: 0 5px;
   }
+`;
+
+export const CardIcon = styled.div`
+ cursor: pointer;
+ border-radius: 50px;
+ :hover {
+  background-color: #cbcecb;
+  padding: 5px;
+ }
 `;

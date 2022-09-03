@@ -5,6 +5,7 @@ import moment from "moment";
 import Image from "next/image";
 import {
   CardDescription,
+  CardMoment,
   CardNameCity,
   CardTempAndImage,
   CardTempMaxAndMin,
@@ -56,7 +57,9 @@ export default function PredictiveSearch() {
         currentCity.map((current) => {
           return (
             <WrapperCurrent key={current.id}>
+              <CardMoment>
               <span>{moment().format("LLL")}</span>
+              </CardMoment>
               <CardTempMaxAndMin>
                 <span>Min {current.main.temp_min.toFixed()}ºC</span>
                 <Icon path={mdiArrowDownThin} size={1} />

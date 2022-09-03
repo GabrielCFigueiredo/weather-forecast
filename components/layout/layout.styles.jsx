@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const WrapperLayout = styled.div`
   background-image: url("/tempo.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: center;
   background-size: cover;
 
   display: flex;
@@ -12,8 +12,12 @@ export const WrapperLayout = styled.div`
   align-items: center;
   gap: 16px;
 
-  padding: 10px;
 
-  width: 100%;
+  max-width: 100%;
   height: 100vh;
+
+  @media(min-width: 400px) {
+    background-image: url("/desktop.png");
+    
+  }
 `;

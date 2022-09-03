@@ -14,14 +14,14 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 100%;
+  width: 100vw;
   height: 90vh;
 `;
 
 export const WrapperForecast = styled.div`
 
   overflow-x: scroll;
-  width: 390px;
+  width: 100%;
   height: 250px;
 
   background-color: black;
@@ -44,13 +44,13 @@ export const CardTempAndImage = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  width: 300px;
+  width: 90%;
 `;
 
 export const CardDescription = styled.div`
   display: flex;
   justify-content: flex-end;
-  width: 270px;
+  width: 85%;
 `;
 
 export const WrapperForecastNextHours = styled.div`

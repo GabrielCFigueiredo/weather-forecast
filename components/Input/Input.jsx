@@ -1,4 +1,4 @@
-import { Input, WrapperInput } from "./Input.styles";
+import { CardIcon, CardInput, Input, WrapperInput } from "./Input.styles";
 import { mdiMagnify } from "@mdi/js";
 import { Icon } from "@mdi/react";
 import { useContext } from "react";
@@ -8,16 +8,16 @@ export default function StyledInput() {
   const { city, handleInput, searchData } = useContext(WeatherContext);
   return (
     <WrapperInput>
-      <div>
+      <CardInput>
         <Input
           onChange={handleInput}
           value={city}
           placeholder="Digite sua Localização"
         />
-      </div>
-      <div>
+      </CardInput>
+      <CardIcon>
         <Icon path={mdiMagnify} size={1} color={"black"} onClick={searchData} />
-      </div>
+      </CardIcon>
     </WrapperInput>
   );
 }
