@@ -1,3 +1,6 @@
+import Icon from "@mdi/react";
+import { mdiArrowDownThin } from "@mdi/js";
+import { mdiArrowUpThin } from "@mdi/js";
 import axios from "axios";
 import moment from "moment";
 import Image from "next/image";
@@ -9,6 +12,7 @@ import {
   CardForecastNextHours,
   CardTempAndImage,
   CardTempMaxAndMin,
+  NameCity,
   Temperature,
   Wrapper,
   WrapperForecast,
@@ -68,7 +72,9 @@ export default function Forecast() {
                 <span>{moment().format("LLL")}</span>
                 <CardTempMaxAndMin>
                   <span>Min {current.main.temp_min.toFixed()}ºC</span>
+                  <Icon path={mdiArrowDownThin} size={1} />
                   <span>Máx {current.main.temp_max.toFixed()}ºC</span>
+                  <Icon path={mdiArrowUpThin} size={1} />
                 </CardTempMaxAndMin>
                 <CardTempAndImage>
                   <Temperature>{current.main.temp.toFixed()}ºC</Temperature>
@@ -77,7 +83,7 @@ export default function Forecast() {
                 <CardDescription>
                 <span>{current.weather[0].description}</span>
                 </CardDescription>
-                <span>{current.name}</span>
+                <NameCity>{current.name}</NameCity>
               </CardCurrent>
             );
           })}

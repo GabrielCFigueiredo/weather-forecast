@@ -40,6 +40,12 @@ export const CardMoment = styled.div`
 `;
 export const Temp = styled.span`
   font-size: 54px;
+  font-weight: bold;
+`;
+
+export const NameCity = styled.span`
+  font-size: 16px;
+  font-weight: bold;
 `;
 export const CardDescription = styled.div`
   display: flex;

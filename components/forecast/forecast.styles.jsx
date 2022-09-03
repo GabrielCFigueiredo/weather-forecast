@@ -37,6 +37,12 @@ export const CardTempMaxAndMin = styled.div`
 
 export const Temperature = styled.span`
   font-size: 54px;
+  font-weight: bold;
+`;
+
+export const NameCity = styled.span`
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 export const CardTempAndImage = styled.div`

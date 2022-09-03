@@ -9,6 +9,7 @@ import {
   CardNameCity,
   CardTempAndImage,
   CardTempMaxAndMin,
+  NameCity,
   Temp,
   Wrapper,
   WrapperCurrent,
@@ -23,13 +24,8 @@ export default function PredictiveSearch() {
   const [currentCity, setCurrentCity] = useState("");
   const [image, setImage] = useState("");
   const {
-    setLocality,
-    setLatitude,
-    setLongitude,
     URL,
     API_KEY,
-    city,
-    setCity,
   } = useContext(WeatherContext);
 
   const API = `http://openweathermap.org/img/wn/${image}@2x.png`;
@@ -74,7 +70,7 @@ export default function PredictiveSearch() {
                 <span>{current.weather[0].description}</span>
               </CardDescription>
               <CardNameCity>
-                <span>{current.name}</span>
+                <NameCity>{current.name}</NameCity>
               </CardNameCity>
             </WrapperCurrent>
           );
